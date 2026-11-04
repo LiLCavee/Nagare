@@ -11,7 +11,7 @@
 
 <p align="center">
     <img width="120px" src="./assets/icon.png"/>
-    <h1 align="center">akuse</h1>
+    <h1 align="center">NAGARE <sub>流</sub></h1>
 </p>
 
 <p align="center">
@@ -19,9 +19,9 @@
 </p>
 
 <p align="center">
-    <img alt="license" src="https://img.shields.io/github/license/aleganza/akuse?style=for-the-badge&labelColor=1a1d24"> 
-    <img alt="GitHub release (with filter)" src="https://img.shields.io/github/v/release/akuse-app/akuse?style=for-the-badge&labelColor=1a1d24">
-    <img alt="total-downloads" src="https://img.shields.io/github/downloads/aleganza/akuse/total?style=for-the-badge&labelColor=1a1d24">
+    <img alt="license" src="https://img.shields.io/github/license/LiLCavee/Nagare?style=for-the-badge&labelColor=1a1d24"> 
+    <img alt="GitHub release (with filter)" src="https://img.shields.io/github/v/release/LiLCavee/Nagare?style=for-the-badge&labelColor=1a1d24">
+    <img alt="total-downloads" src="https://img.shields.io/github/downloads/LiLCavee/Nagare/total?style=for-the-badge&labelColor=1a1d24">
     <a href="https://discord.gg/f3wdnqSNX5">
         <img alt="Discord" src="https://img.shields.io/discord/1163970236224118796?style=for-the-badge&labelColor=1a1d24&label=discord&logo=discord&color=%235567E3">
     </a>
@@ -37,47 +37,44 @@
 
 <br/>
 
-# Why should you choose akuse?
+# Why should you choose NAGARE?
 
-- **⚠️ You shouldn't:** The app is broken at the moment. Check the warning below there.
-- ~~**🚀 Fast:**~~ ~~Smooth and quick streaming with minimal buffering.~~
-- ~~**🎨 Sleek UI:**~~ ~~User-friendly and eye-catching.~~
-- ~~**🔄 Reliable:**~~ ~~Regular updates and fresh content.~~
+- **🚀 Fast:** Smooth and quick streaming with minimal buffering (HLS with adaptive **Auto** quality).
+- **🎨 Sleek UI:** User-friendly and eye-catching.
+- **🔔 Never miss a release:** "This Week" schedule calendar + desktop episode-release notifications.
+- **🛠 Actually maintained:** actively fixed, tested, and shipped via [GitHub Releases](https://github.com/LiLCavee/Nagare/releases) with in-app updates.
+- **🆓 Free & open source:** no ads, no accounts required (optional AniList login for lists/progress).
 
 <br/>
 
-# Languages
+# Languages & sources
 
-> [!WARNING]  
-> Almost all sources are broken. The app will be rebuilt with a modular source system, but no ETA.
+All sources below are live and selectable in **Settings → source**. Dead upstream sources (Yuki, Maze, Pahe, HiAnime, Gogoanime) were removed from the app.
 
-The languages where both the sub and dub don't work are implemented in the app, but they aren't selectable.
+| Source           | Languages       | Sub               | Dub               | Notes                                             |
+| ---------------- | --------------- | ----------------- | ----------------- | ------------------------------------------------- |
+| 🇺🇸 AnimeParadise | English + more  | ✅ (captions)     | ✅ when provided  | Default source; in-player captions + AniSkip data |
+| 🇺🇸 AnimeHeaven   | English         | ✅ when provided  | ✅ when provided  | Direct MP4 mirrors (fast, no HLS buffering)       |
+| 🇮🇹 AnimeUnity    | Italian         | ✅                | ✅                | Italian recommended                               |
 
-| Source           | Languages           | Sub | Dub | Notes                                                      |
-| ---------------- | ------------------- | --- | --- | ---------------------------------------------------------- |
-| 🌍 Yuki          | English + many more | ❌  | ❌  | Recommended                                                |
-| 🇮🇹 AnimeUnity    | Italian             | ✅  | ✅  | Italian recommended                                        |
-| 🇺🇸 Maze          | English             | ❌  | ❌  | Great alternative                                          |
-| 🇺🇸 Pahe          | English             | ❌  | ❌  | Great alternative                                          |
-| 🇺🇸 AnimeParadise | English + some more | ❌  | ❌  | Works for some anime, not always up-to-date                |
-| 🇺🇸 AnimeHeaven   | English             | ❌  | ❌  | Works for some anime, not always up-to-date                |
-| 🌍 HiAnime       | English + many more | ❌  | ❌  | Unreliable, slow, doesn't always provide all the languages |
-| 🇺🇸 Gogoanime     | English             | ❌  | ❌  | Broken                                                     |
+- Subtitles are configurable in the player gear menu: **language, size, and color**.
+- Dub preference: **Settings → Player → Watch dubbed** (used whenever the source offers a dub track).
+- Multi-audio streams expose an **Audio Track** switcher in the player.
 
 # Other info
 
 <details>
   <summary><h2>⚙️ Running locally for development</h2></summary>
 
-Start cloning akuse:
+Start cloning NAGARE:
 
 ```
-git clone https://github.com/akuse-app/akuse.git
+git clone https://github.com/LiLCavee/Nagare.git
 ```
 
 Next, go to [this link](https://anilist.co/settings/developer) and create a new AniList API Client.
 As Redirect Uri, you can insert `akuse://index,https://anilist.co/api/v2/oauth/pin` (these are two space seprated uri) and it should work.
-Now go inside the src/modules folder and create a clientData.ts file with a structure like this:
+The repo ships with `src/modules/clientData.ts` already filled in (test credentials). For your own development, replace it with your own AniList API Client data, structured like this:
 
 ```bash
 import { ClientData } from "../types/types";
@@ -132,7 +129,7 @@ In AppImage and in a Development environment, the Log-In redirect doesn't work s
    ./path/to/app.AppImage
    ```
 
-2. Now click on the login button and authenticate in the browser. Next, copy the code you are given, go back to akuse and click the navbar element with a laptop icon. Here you can paste your code.
+2. Now click on the login button and authenticate in the browser. Next, copy the code you are given, go back to NAGARE and click the navbar element with a laptop icon. Here you can paste your code.
 
 3. Finally, paste your code and push the button. If the code you entered is correct, you are now Logged-in, othwerise repeat these steps and see what has gone wrong.
 
@@ -160,20 +157,19 @@ In AppImage and in a Development environment, the Log-In redirect doesn't work s
 
 ## 🙌 Credits
 
-- [Consumet API](https://github.com/consumet/consumet.ts): used to fetch episodes links
+- [sofamaxxing.ts](https://github.com/search?q=sofamaxxing): vendored scraper library (successor of the DMCA'd Consumet) used to fetch episode links
 - [This API](https://api.ani.zip/mappings?anilist_id=21): used to fetch episodes info and thumbnails
 - [AniSkip API](https://api.aniskip.com/api-docs#/skip-times/SkipTimesControllerV2_getSkipTimes): used to fetch episode intros & outros.
-- [Aniwatch API](https://github.com/ghoshRitesh12/aniwatch-api): used to get hianime episode sources if consumet fails to.
   <br/>
 
 # Legal
 
 ## 📢 Disclaimer
 
-- akuse helps users find anime by simply scraping links from various websites.
-- akuse or its developers do not host the content found on akuse. All images and anime information found in the app are retrieved from AniList public API.
-- Additionally, all anime links found on akuse are from various third party anime hosting websites.
-- akuse or its owner are not responsible for the misuse of any content inside or outside the app and shall not be responsible for the dissemination of any content within the app.
+- NAGARE helps users find anime by simply scraping links from various websites.
+- NAGARE or its developers do not host the content found on NAGARE. All images and anime information found in the app are retrieved from AniList public API.
+- Additionally, all anime links found on NAGARE are from various third party anime hosting websites.
+- NAGARE or its owner are not responsible for the misuse of any content inside or outside the app and shall not be responsible for the dissemination of any content within the app.
 - By using this app, you agree that the app developer is not responsible for the content within the app. Nevertheless, they may or may not come from legitimate sources.
 - For internet violations, please contact the source website. The developer is not legally responsible.
 
