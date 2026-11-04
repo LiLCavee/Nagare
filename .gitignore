@@ -1,0 +1,42 @@
+.env
+# src/modules/clientData.ts  # now committed so the repo builds out of the box
+dist
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Coverage directory used by tools like istanbul
+coverage
+.eslintcache
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
+
+# OSX
+.DS_Store
+
+release/app/dist
+release/build
+.erb/dll
+
+.idea
+npm-debug.log.*
+*.css.d.ts
+*.sass.d.ts
+*.scss.d.ts
+
+# the vendored scraper library ships its compiled output (imported at runtime)
+!vendor/sofamaxxing.ts/dist
+node_modules/
+release/build/
+release/app/dist/
+release/app/node_modules/
+vendor/sofamaxxing.ts/dist/
+vendor/sofamaxxing.ts/node_modules/

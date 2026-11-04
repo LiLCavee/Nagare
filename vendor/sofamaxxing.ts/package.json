@@ -1,0 +1,23 @@
+{
+  "name": "sofamaxxing.ts",
+  "version": "1.0.1",
+  "description": "Vendored + patched scraper library for akuse (consumet removed, AnimeParadise API rewritten)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "GPL-3.0-or-later",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {
+    "axios": "^1.7.9",
+    "react-native-cheerio": "^1.0.0-rc.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "typescript": "^5.7.3"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}
