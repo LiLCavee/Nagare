@@ -48,6 +48,9 @@ export const getSourceFlag = async (): Promise<Provider | null> => {
     case 'ANIMEUNITY': {
       return 'ANIMEUNITY';
     }
+    case 'ANIFAM': {
+      return 'ANIFAM';
+    }
     case 'ANIMEPARADISE':
     default: {
       return 'ANIMEPARADISE';

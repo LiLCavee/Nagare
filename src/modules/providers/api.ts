@@ -11,6 +11,7 @@ import HiAnimeAPI from './hianime';
 import AniPlayAPI from './aniplay';
 import axios from 'axios';
 import AnimeParadiseAPI from './animeparadise';
+import AniFamAPI from './anifam';
 
 const STORE = new Store();
 
@@ -45,6 +46,10 @@ export const searchInProvider = async (query: string) => {
     }
     case 'ANIMEUNITY': {
       const api = new AnimeUnityApi();
+      return await api.searchInProvider(query, dubbed);
+    }
+    case 'ANIFAM': {
+      const api = new AniFamAPI();
       return await api.searchInProvider(query, dubbed);
     }
   }
@@ -132,6 +137,15 @@ export const searchAutomaticMatchInProvider = async (
         listAnimeData.media.startDate?.year ?? 0,
       );
     }
+    case 'ANIFAM': {
+      const api = new AniFamAPI();
+      return await api.searchMatchInProvider(
+        animeTitles,
+        customTitle ? customTitle.index : 0,
+        dubbed,
+        listAnimeData.media.startDate?.year ?? 0,
+      );
+    }
   }
 
   return null;
@@ -203,6 +217,16 @@ export const getSourceFromProvider = async (
     case 'ANIMEUNITY': {
       const api = new AnimeUnityApi();
       const source = await api.getEpisodeSource(providerAnimeId, episode);
+
+      return source;
+    }
+    case 'ANIFAM': {
+      const api = new AniFamAPI();
+      const source = await api.getEpisodeSource(
+        providerAnimeId,
+        episode,
+        dubbed,
+      );
 
       return source;
     }

@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain, shell } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain, session, shell } from 'electron';
 import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
 import path from 'path';
@@ -185,9 +185,66 @@ app.on('window-all-closed', () => {
   }
 });
 
+/**
+ * AniFam playback CDNs (hls.dramahot.top relay, megap.shiora.top resolved
+ * streams, *.mysubsplay.com subtitles) enforce hotlink protection, but the
+ * renderer cannot set Referer/Origin/User-Agent (forbidden XHR headers).
+ * Inject them at the network layer for those hosts instead.
+ */
+const STREAM_HEADER_RULES: [RegExp, Record<string, string>][] = [
+  [
+    /(^|\.)dramahot\.top$/,
+    { Referer: 'https://zokoanime.video/' },
+  ],
+  [
+    /(^|\.)shiora\.top$/,
+    {
+      Referer: 'https://megaplay.buzz/',
+      Origin: 'https://megaplay.buzz',
+      'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    },
+  ],
+  [
+    /(^|\.)mysubsplay\.com$/,
+    { Referer: 'https://megaplay.buzz/' },
+  ],
+];
+
+const registerStreamHeaderInjection = () => {
+  session.defaultSession.webRequest.onBeforeSendHeaders(
+    {
+      urls: [
+        '*://*.dramahot.top/*',
+        '*://dramahot.top/*',
+        '*://*.shiora.top/*',
+        '*://*.mysubsplay.com/*',
+      ],
+    },
+    (details, callback) => {
+      try {
+        const hostname = new URL(details.url).hostname;
+        const rule = STREAM_HEADER_RULES.find(([pattern]) =>
+          pattern.test(hostname),
+        );
+        if (!rule) {
+          callback({ requestHeaders: details.requestHeaders });
+          return;
+        }
+        callback({
+          requestHeaders: { ...details.requestHeaders, ...rule[1] },
+        });
+      } catch (error) {
+        callback({ requestHeaders: details.requestHeaders });
+      }
+    },
+  );
+};
+
 app
   .whenReady()
   .then(() => {
+    registerStreamHeaderInjection();
     createWindow();
     app.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the

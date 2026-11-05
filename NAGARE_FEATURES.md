@@ -28,6 +28,7 @@ Selectable in **Settings → General → language/source** (default AnimeParadis
 | 🇺🇸 **AnimeParadise** | JSON API | Primary source; search, episode lists, HLS streams + captions + AniSkip data |
 | 🇺🇸 **AnimeHeaven** | Cookie-gate scraping | MP4 mirrors (direct file streams) |
 | 🇮🇹 **AnimeUnity** | Italian domain (`.co`) | Working domain after old one died |
+| 🌐 **AniFam** | Direct API (`anifam.net`) | Backend of the official AniFam app: relayed HLS (hotlink headers injected in main process), sub/dub track switching, validated fallback streams |
 
 - Dead sources (Gogoanime, old HiAnime, aniplay) were removed.
 - The scraping library (`sofamaxxing.ts`) is **vendored** into the repo (the

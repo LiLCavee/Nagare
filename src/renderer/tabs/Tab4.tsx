@@ -17,7 +17,8 @@ const STORE = new Store();
 export type Provider =
   | 'ANIMEPARADISE'
   | 'ANIMEHEAVEN'
-  | 'ANIMEUNITY';
+  | 'ANIMEUNITY'
+  | 'ANIFAM';
 
 interface Option {
   value: any;
@@ -28,6 +29,7 @@ export const LANGUAGE_OPTIONS: Option[] = [
   { value: 'ANIMEPARADISE', label: '🇺🇸 AnimeParadise' },
   { value: 'ANIMEHEAVEN', label: '🇺🇸 AnimeHeaven' },
   { value: 'ANIMEUNITY', label: '🇮🇹 AnimeUnity' },
+  { value: 'ANIFAM', label: '🌐 AniFam' },
 ];
 
 const Element: React.FC<{

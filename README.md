@@ -56,6 +56,7 @@ All sources below are live and selectable in **Settings → source**. Dead upstr
 | 🇺🇸 AnimeParadise | English + more  | ✅ (captions)     | ✅ when provided  | Default source; in-player captions + AniSkip data |
 | 🇺🇸 AnimeHeaven   | English         | ✅ when provided  | ✅ when provided  | Direct MP4 mirrors (fast, no HLS buffering)       |
 | 🇮🇹 AnimeUnity    | Italian         | ✅                | ✅                | Italian recommended                               |
+| 🌐 AniFam         | English         | ✅                | ✅                | Official-app API; sub/dub tracks + English captions |
 
 - Subtitles are configurable in the player gear menu: **language, size, and color**.
 - Dub preference: **Settings → Player → Watch dubbed** (used whenever the source offers a dub track).
